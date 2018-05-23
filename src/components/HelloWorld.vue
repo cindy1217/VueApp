@@ -93,7 +93,7 @@ export default {
   },
   created(){
     console.log(this.Util.getName(), this.Util.getInfo())
-    this.$http.get('cms/banner/list?type=home&_=1520416625859',{}).then((res)=>{
+    this.$http.get('/cms/banner/list?type=home&_=1520416625859',{}).then((res)=>{
       console.log(res)
     })
   }
