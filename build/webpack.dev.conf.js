@@ -1,4 +1,4 @@
-'use strict'
+  'use strict'
 // 引入公共的方法utils
 const utils = require('./utils')
 // 引入wepback

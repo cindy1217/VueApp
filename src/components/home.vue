@@ -17,8 +17,8 @@
           target="_blank"
         >
           Forum
-        </a>ffffffffffffffffffffffffdsfadserw
-      </li>
+        </a>
+      </li>fdffffffffffffffffffffffffffdsafdsfdsfds
       <li>
         <a
           href="https://chat.vuejs.org"

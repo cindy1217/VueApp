@@ -39,7 +39,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot, // 打包后的文件目录
     filename: utils.assetsPath('js/[name].[chunkhash].js'), // 带包后文件名
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js') //非入口文件的文件名，而又需要被打包出来的文件命名配置,如按需加载的模块
+    chunkFilename: utils.assetsPath('js/[name].[chunkhash]js') //非入口文件的文件名，而又需要被打包出来的文件命名配置,如按需加载的模块
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html

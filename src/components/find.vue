@@ -17,7 +17,7 @@
           target="_blank"
         >
           Forum
-        </a>ffffffffffffffffffffffffdsfadserw
+        </a>
       </li>
       <li>
         <a
@@ -77,7 +77,7 @@
           target="_blank"
         >
           awesome-vue
-        </a>
+        </a>fjllllllllllllllllllll;sdjewuruoewurewojrew
       </li>
     </ul>
   </div>
