@@ -92,10 +92,11 @@ export default {
     }
   },
   created(){
-    console.log(this.Util.getName(), this.Util.getInfo())
+    console.log(this.Utils.getName(), this.Utils.getInfo())
     this.$http.get('/cms/banner/list?type=home&_=1520416625859',{}).then((res)=>{
       console.log(res)
     })
+    console.log(this.Utils,'房价多少了')
   }
 }
 </script>
