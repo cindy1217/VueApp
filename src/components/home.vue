@@ -94,9 +94,8 @@ export default {
   created(){
     console.log(this.Utils.getName(), this.Utils.getInfo())
     this.$http.get('/cms/banner/list',{
-      parmas:{
+      params:{
         type:"home",
-        _:1520416625859
       }
     }).then((res)=>{
       console.log(res)
