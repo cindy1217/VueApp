@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 // 前置守卫
 router.beforeEach((to, from, next) => {
-  console.log(to,from,next,'我都')
+  // console.log(to,from,next,'我都')
   next()
 })
 // 后置守卫

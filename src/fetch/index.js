@@ -28,3 +28,22 @@ export default (Vue) => {
   // 挂载在Vue原型上
   Vue.prototype.$http = axios
 }
+
+
+// 控制环境配置，npm run dev 开发环境 ，npm run build 生成环境
+// let envConfig 
+// let _NODE_ENV = process.env.NODE_ENV 
+// switch(_NODE_ENV){
+//   case 'development':
+//     envConfig = devEnv;
+//   break;
+//   case 'production':
+//     envConfig = prodEnv;
+//   break;
+//   default:
+//     envConfig = devEnv;
+// }
+// 调用公共的请求路径
+// config.baseURL = envConfig.HTTP.BASE_URL
+// config.timeout = 10000;
+   
