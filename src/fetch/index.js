@@ -14,8 +14,33 @@ export default (Vue) => {
       config.data = qs.stringify(config.data)
       config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
     }
-    const envConfig = Vue.config.productionTip ? prodEnv : devEnv
+    // 控制环境配置，npm run dev 开发环境 ，npm run build 生成环境
+    let envConfig 
+    let _NODE_ENV = process.env.NODE_ENV 
+    switch(_NODE_ENV){
+      case 'development':
+        envConfig = devEnv;
+      break;
+      case 'production':
+        envConfig = prodEnv;
+      break;
+      default:
+        envConfig = devEnv;
+    }
+    // 调用公共的请求路径
     config.baseURL = envConfig.HTTP.BASE_URL
+    // 设置超时时间
+    config.timeout = 10000;
+    // 增加时间戳，防止拉取缓存
+    switch(config.method){
+      case 'get':
+      config.params._= new Date().getTime()
+      break;
+      case 'post':
+      config.params._= new Date().getTime()
+      break;
+      default:
+    }
     return config
   }, (error) => {
     return Promise.reject(error)
@@ -29,3 +54,7 @@ export default (Vue) => {
   // 挂载在Vue原型上
   Vue.prototype.$http = axios
 }
+
+
+
+   

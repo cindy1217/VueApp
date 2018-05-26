@@ -17,7 +17,7 @@
           target="_blank"
         >
           Forum
-        </a>ffffffffffffffffffffffffdsfadserw
+        </a>
       </li>
       <li>
         <a
@@ -77,7 +77,7 @@
           target="_blank"
         >
           awesome-vue
-        </a>
+        </a>fjllllllllllllllllllll;sdjewuruoewurewojrew
       </li>
     </ul>
   </div>
@@ -96,6 +96,7 @@ export default {
     this.$http.get('/cms/banner/list?type=home&_=1520416625859',{}).then((res)=>{
       console.log(res)
     })
+    console.log(this.Utils,'房价多少了')
   }
 }
 </script>

@@ -1,19 +1,20 @@
 'use strict'
+//check-versions：调用检查版本的文件。加（）代表直接调用该函数
 require('./check-versions')()
-
+//设置当前是生产环境
 process.env.NODE_ENV = 'production'
-
-const ora = require('ora')
-const rm = require('rimraf')
+//下面定义常量引入插件
+const ora = require('ora')//①加载动画
+const rm = require('rimraf')//②删除文件
 const path = require('path')
-const chalk = require('chalk')
+const chalk = require('chalk')//③对文案输出的一个彩色设置
 const webpack = require('webpack')
-const config = require('../config')
-const webpackConfig = require('./webpack.prod.conf')
+const config = require('../config')//默认读取下面的index.js文件
+const webpackConfig = require('./webpack.prod.conf')//调用start的方法实现加载动画，优化用户体验
 
 const spinner = ora('building for production...')
 spinner.start()
-
+//先删除dist文件再生成新文件，因为有时候会使用hash来命名，删除整个文件可避免冗余
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err
   webpack(webpackConfig, (err, stats) => {
