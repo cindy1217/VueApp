@@ -92,7 +92,6 @@ export default {
     }
   },
   created(){
-    console.log(this.Utils.getName(), this.Utils.getInfo())
     this.$http.get('/cms/banner/list',{
       params:{
         type:"home",

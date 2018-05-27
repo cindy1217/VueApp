@@ -1,5 +1,4 @@
 import * as types from '../types'
-
 const state = {
   loginStatus: !!localStorage.getItem('loginStatus') || false
 }
