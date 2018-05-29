@@ -1,110 +1,45 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>fdffffffffffffffffffffffffffdsafdsfdsfds
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+      <ul>
+        <li v-for="item, index in msg" >
+          <span  @click="mm(item.id)"  :class="{active:val.indexOf(item.id) > -1}">{{item.name}}</span>
+        </li>
+      </ul>
   </div>
 </template>
 
 <script>
+import store from '../vuex/store.js'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: [{id:1,name:'aa'},{id:2,name:'aa'},{id:3,name:'aa'},{id:4,name:'aa'}],
+      val:[1]
+    }
+  },
+  methods:{
+    mm(id){
+      let idx = this.val.indexOf(id)
+      if( idx > -1){
+        this.val.splice(idx,1)
+      }else{
+        this.val.push(id)
+      }
+      console.log(this.val)
     }
   },
   created(){
-    this.$http.get('/cms/banner/list',{
-      params:{
-        type:"home",
-      }
-    }).then((res)=>{
-      console.log(res)
-    })
+    
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.active{
+  background: pink;
+}
 h1, h2 {
   font-weight: normal;
 }
