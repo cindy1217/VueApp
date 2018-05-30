@@ -91,6 +91,27 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
+  methods:{
+    snsapiBaseAuthorization(){
+      // if(/*判断否为微信环境*/true){
+      //     let openId = localStorage.getItem('openId');
+      //     let appId = process.env.appId
+      //     let componentAppId = process.env.componentAppId;
+      //     let redirectUrl = process.env.redirectUrl;
+      //     redirectUrl = encodeURIComponent(redirectUrl)
+      //     let redirect_url = Base64.encodeURI(location.href)
+      //     let uuid = global.app.getQueryString('uuid');
+      //     if(!openId){
+      //         location = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appId+'&redirect_uri='+redirectUrl+ redirect_url +'&response_type=code&scope=snsapi_base&state=STATE&component_appid='+ componentAppId +'#wechat_redirect'
+      //         localStorage.setItem('openId',global.app.getQueryString('openid'));      
+      //     }
+      //     //打点
+      //     global.app.pointOut.call(this,'1-goods-info',uuid);    
+      // }
+      return                                
+    },
+
+  },
   created(){
     console.log(this.Utils.getName(), this.Utils.getInfo())
     this.$http.get('/cms/banner/list?type=home&_=1520416625859',{}).then((res)=>{
