@@ -5,6 +5,7 @@
           <span  @click="mm(item.id)"  :class="{active:val.indexOf(item.id) > -1}">{{item.name}}</span>
         </li>
       </ul>
+      <a href="https://github.com/Toyuye/VueApp/archive/master.zip" rel="nofollow">Download ZIP</a>
   </div>
 </template>
 
