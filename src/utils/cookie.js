@@ -58,9 +58,7 @@ export default {
     }
 }
 
-
-
-// <!-- PIWIK的底层脚本 -->
+// <!-- PIWIK的底层脚本统计代码 -->
 //   <script>
 //     var _paq = _paq || [];
 //     _paq.push(["setCookieDomain", "*.molbase.cn"]);

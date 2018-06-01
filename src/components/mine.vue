@@ -1,85 +1,10 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forumfdsdsfdsfadsfsdfads
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <dl>
+      <dt @click="up" style="width: 100px,height:100px;background: pink">+</dt>
+      <dt>{{msg}}</dt>
+      <dd @click="down" style="width: 100px,height:100px;background: pink">-</dd>
+    </dl>
   </div>
 </template>
 
@@ -88,14 +13,26 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg:520,
+    }
+  },
+  watch:{
+    msg(val){
+      console.log(val)
+      this.$router.replace('/mine/'+ val)
+    }
+  },
+  methods:{
+    up(){
+      this.msg += 1
+    },
+    down(){
+      this.msg -= 1
+
     }
   },
   created(){
-    console.log(this.Utils.getName(), this.Utils.getInfo())
-    this.$http.get('/cms/banner/list?type=home&_=1520416625859',{}).then((res)=>{
-      console.log(res)
-    })
+    this.msg = Number(this.$route.params.id)
   }
 }
 </script>
