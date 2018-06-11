@@ -53,6 +53,7 @@ exports.cssLoaders = function (options) {
       //ExtractTextPlugin可提取出文本，代表首先使用上面处理的loaders，当未能正确引入时使用vue-style-loader
       return ExtractTextPlugin.extract({
         use: loaders,
+        publicPath:'../../',// 解决背景图片不能获取的问题 后增加
         fallback: 'vue-style-loader'
       })
     } else {

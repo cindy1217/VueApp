@@ -51,33 +51,9 @@ export default {
     delCookie(name) {
         var exp = new Date(); 
         exp.setTime(exp.getTime() - 1); 
-        var cval = this.get(name); 
+        var cval = this.get(name);
         if(cval != null){ 
             document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
         }
     }
 }
-
-// <!-- PIWIK的底层脚本统计代码 -->
-//   <script>
-//     var _paq = _paq || [];
-//     _paq.push(["setCookieDomain", "*.molbase.cn"]);
-//     _paq.push(["setUserId", (function(){var arr = document.cookie.match(new RegExp("(| )pin=([;]*)(;|$)")); return (arr != null) ? unescape(arr2) : 0;})()]);
-//     _paq.push(['trackPageView']);
-//     (function() {
-//       var u="//r.molbase.net/";
-//       _paq.push(['setTrackerUrl','//ga.molbase.cn/']);
-//       _paq.push(['setSiteId', '2']);
-//       var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-//       g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'mga.js?v='+((new Date()).getDate())+'.js'; s.parentNode.insertBefore(g,s);
-//     })();
-//     function mgaTrackLink(url){
-//       if(!url)return;
-//       try{
-//         Piwik.getAsyncTrackers()[0].trackLink(url,'virtual_link');
-//       }catch (e){
-//         try{console.log('Error fun mgaTrackLink: '+url);}catch(ee){}
-//       }
-//     }
-//   </script>
-

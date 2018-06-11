@@ -29,7 +29,5 @@ let
             return storage;
         }
     }());
-
 export  default localStorage;
-
 // WEBPACK FOOTER //

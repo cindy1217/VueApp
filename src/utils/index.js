@@ -1,10 +1,4 @@
 export default {
-    getName () {
-      return 'brodyliao'
-    },
-    getInfo () {
-        return 'Taoxiaoping'
-    },
     getOS () {
         return (function () {
             let u = navigator.userAgent;
@@ -22,5 +16,3 @@ export default {
         })();
     }
 }
-
-
