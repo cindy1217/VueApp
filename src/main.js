@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import "./assets/sass/common/_global.scss";
+import "./assets/sass/common/_function.scss";
 // 前置守卫
 router.beforeEach((to, from, next) => {
   // console.log(to,from,next,'我都')

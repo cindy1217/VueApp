@@ -1,0 +1,6 @@
+@charset "utf-8";
+/** px convert to rem **/
+@function ptr($tag){
+  @return #{$tag/100}rem;
+  @return #{$tag}px;
+}

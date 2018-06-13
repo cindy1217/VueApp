@@ -34,10 +34,10 @@ export default (Vue) => {
     // 增加时间戳，防止拉取缓存
     switch(config.method){
       case 'get':
-      config.params._= new Date().getTime()
+        !!config.params ? config.params._t = new Date().getTime() : config.params = { _t: new Date().getTime() }
       break;
       case 'post':
-      config.params._= new Date().getTime()
+        !!config.data ? config.data._t = new Date().getTime() : config.data = { _t: new Date().getTime() }
       break;
       default:
     }
