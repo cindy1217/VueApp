@@ -31,7 +31,9 @@ export default {
     }
   },
   created(){
-    
+    this.$http.get('/cms/banner/list?type=home').then((res)=>{
+      console.log(res)
+    })
   }
 }
 </script>

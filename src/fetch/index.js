@@ -1,18 +1,32 @@
 import axios from 'axios'
 import qs from 'qs'
+import devEnv from '../../config/dev.env'
+import prodEnv from '../../config/dev.env'
 export default (Vue) => {
   // 使用axios来发ajax
   // 增加一个拦截器，当method为form时，使用表单提交的方式
   // 使用qs包将data转为表单数据
   axios.interceptors.request.use((config) => {
-  	console.log(config,'我我我')
     if (config.method === 'form') {
       config.method = 'post'
       config.data = qs.stringify(config.data)
       config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
     }
     // 调用公共的请求路径
-    config.baseURL = process.env.HTTP.BASE_URL
+    // if(process.env.NODE_ENV == 'development'){
+    //   config.baseURL =  devEnv.HTTP.BASE_URL
+    //   console.log(config.baseURL)
+    // }else
+    switch(process.env.NODE_ENV){
+      case 'development':
+        config.baseURL = devEnv.HTTP.BASE_URL
+      break;
+      case 'production':
+      config.baseURL = prodEnv.HTTP.BASE_URL
+      break;
+      default:
+    }
+    console.log(config.baseURL)
     // 设置超时时间
     config.timeout = 10000;
     // 增加时间戳，防止拉取缓存

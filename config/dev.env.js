@@ -8,6 +8,6 @@ const prodEnv = require('./prod.env')
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   HTTP: {
-  	BASE_URL:'http://fapi.uneedme.cn/'
+  	BASE_URL: "http://fapi.uneedme.cn/"
   }
 })
