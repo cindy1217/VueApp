@@ -116,6 +116,9 @@ export default {
     this.$http.get('/cms/banner/list?type=home',{}).then((res)=>{
       console.log(res)
     })
+    this.$store.dispatch('getUserInfo',true)
+  },
+  mounted(){
   }
 }
 </script>

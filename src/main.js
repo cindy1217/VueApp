@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './vuex/store'
 
 import "./assets/sass/common/_global.scss";
 import "./assets/sass/common/_function.scss";
@@ -33,6 +34,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
