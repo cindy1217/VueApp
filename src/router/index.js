@@ -5,9 +5,12 @@ const HelloWorld =  r =>  require.ensure([],() => r(require('@/components/HelloW
 const Home = r => require.ensure([],()=>r(require("@/components/home")),'home')
 const Mine = r => require.ensure([],()=>r(require("@/components/mine")),'mine')
 const Find = r => require.ensure([],()=>r(require("@/components/find")),'find')
+const HH = r => require.ensure([],()=>r(require("@/components/activity/home")),'home')
+const HD = r => require.ensure([],()=>r(require("@/components/activity/mine")),'mine')
 Vue.use(Router)
 
 export default new Router({
+  mode:'history',
   routes: [
     {
       path: '/',
@@ -21,17 +24,17 @@ export default new Router({
     },
     {
     	path:"/HelloWorld",
-    	name:'/HelloWorld',
+    	name:'HelloWorld',
     	component: HelloWorld
     },
     {
       path:"/Mine/:id",
-      name:'/Mine',
+      name:'Mine',
       component: Mine
     },
     {
       path:"/Find",
-      name:'/Find',
+      name:'Find',
       component: Find
     }
   ]

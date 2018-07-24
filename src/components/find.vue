@@ -1,85 +1,9 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>fjllllllllllllllllllll;sdjewuruoewurewojrew
-      </li>
-    </ul>
+      
+    <div style="width:100px;height: 40px;background: pink">
+      login
+    </div>
   </div>
 </template>
 
@@ -92,11 +16,15 @@ export default {
     }
   },
   created(){
-    console.log(this.Utils.getName(), this.Utils.getInfo())
-    this.$http.get('/cms/banner/list?type=home&_=1520416625859',{}).then((res)=>{
+    // this.$http.get('/cms/banner/list?type=home&_=1520416625859',{}).then((res)=>{
+    //   console.log(res)
+    // })
+    this.$http.post('http://47.74.217.233:3000/main/admin/auth/login',{
+      username:'xiongzhend',
+      password:123456
+    }).then((res)=>{
       console.log(res)
     })
-    console.log(this.Utils,'房价多少了')
   }
 }
 </script>

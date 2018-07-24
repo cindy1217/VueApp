@@ -2,6 +2,6 @@
 module.exports = {
   NODE_ENV: '"production"',
   HTTP: {
-    BASE_URL: 'https://fapi.uneedme.cn/'
+    BASE_URL: '"https://fapi.uneedme.cn/"'
   }
 }
