@@ -3,6 +3,7 @@ import wx from 'weixin-js-sdk'
 // console.log(process.env)
 // 该方法在main.js router.afterEach中调用
 export  function initWxShare(to) {
+			console.log(to)
 			// 分享内容做成动态可编辑获取
 			let shareContentConfig = {
 				title:'我是分享功能',
@@ -13,7 +14,8 @@ export  function initWxShare(to) {
 				cancel: function() {}
 			}
 			// 路径请求
-			let configURL = window.location.origin + to.fullPath
+			let configURL = window.location.origin + to.fullPath//history 模式
+			// let configURL = window.location.href.split('#')[0]// hash
 			fetch.get('User/Wechat/jssdk',{
 				params:{
 					'url': encodeURIComponent(configURL),
