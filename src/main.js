@@ -13,6 +13,14 @@ import "./assets/sass/common/_global.scss";
 import "./assets/sass/common/_function.scss";
 // 前置守卫
 router.beforeEach((to, from, next) => {
+  // 设置页面标题
+  document.title = to.meta.title
+  // meta 标签描述设置
+  let description = document.querySelector("meta[name=description]")
+  description.setAttribute('content', to.meta.description)
+  // meta 关键字设置 
+  let keywords = document.querySelector("meta[name=keywords]")
+  keywords.setAttribute('content', to.meta.keywords)
   // 兼容 ios 微信分享功能
   if (OS().ios && to.path !== location.pathname) {
     // 此处不可使用location.replace
@@ -24,7 +32,8 @@ router.beforeEach((to, from, next) => {
 // 后置守卫
 router.afterEach((to, from) => {
   // 初始化微信分享功能
-  initWxShare(to)  
+  initWxShare(to)
+
 })
 // 封装fetch
 import fetch from './fetch'

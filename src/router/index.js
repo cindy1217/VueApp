@@ -15,27 +15,52 @@ export default new Router({
     {
       path: '/',
       name: '/',
-      component: Home
+      component: Home,
+      meta:{
+        title:'首页',
+        description:'我是首页描述',
+        keywords:'我是首页关键字'
+      }
     },
     {
     	path:"/home",
     	name: "home",
-    	component : Home
+    	component : Home,
+      meta:{
+        title:'首页',
+        description:'我是首页描述',
+        keywords:'我是首页关键字'
+      },
     },
     {
     	path:"/HelloWorld",
     	name:'HelloWorld',
-    	component: HelloWorld
+    	component: HelloWorld,
+      meta:{
+        title:'你好世界',
+        description:'你好世界描述',
+        keywords:'你好世界关键字'
+      },
     },
     {
       path:"/Mine/:id",
       name:'Mine',
-      component: Mine
+      component: Mine,
+      meta:{
+        title:'我的',
+        description:'我的描述',
+        keywords:'我的关键字'
+      },
     },
     {
       path:"/Find",
       name:'Find',
-      component: Find
+      component: Find,
+      meta:{
+        title:'寻找',
+        description:'寻找描述',
+        keywords:'寻找关键字'
+      },
     }
   ]
 })
