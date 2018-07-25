@@ -28,12 +28,12 @@ router.beforeEach((to, from, next) => {
   }
   next() 
 })
-
 // 后置守卫
 router.afterEach((to, from) => {
-  // 初始化微信分享功能
-  initWxShare(to)
-
+  // 微信环境下初始化微信分享功能
+  if(OS().weChat) {
+    initWxShare(to)
+  }
 })
 // 封装fetch
 import fetch from './fetch'
