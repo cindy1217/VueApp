@@ -6,7 +6,7 @@ import router from './router'
 import store from './vuex/store'
 // 判断系统
 import { OS } from './utils'
-
+import { initWxShare } from './utils/shareConfig'
 
 import "./assets/sass/common/_global.scss";
 import "./assets/sass/common/_function.scss";
@@ -17,12 +17,13 @@ router.beforeEach((to, from, next) => {
   if (OS().ios && to.path !== location.pathname) {
     // 此处不可使用location.replace
     location.assign(to.fullPath)
-  } 
+  }
+  next() 
 })
 
 // 后置守卫
 router.afterEach((to, from) => {
-  
+  initWxShare(to)  
 })
 // 封装fetch
 import fetch from './fetch'

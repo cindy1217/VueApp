@@ -16,15 +16,15 @@ export default {
     }
   },
   created(){
-    // this.$http.get('/cms/banner/list?type=home&_=1520416625859',{}).then((res)=>{
-    //   console.log(res)
-    // })
-    this.$http.post('http://47.74.217.233:3000/main/admin/auth/login',{
-      username:'xiongzhend',
-      password:123456
-    }).then((res)=>{
+    this.$http.get('/cms/banner/list?type=home&_=1520416625859',{}).then((res)=>{
       console.log(res)
     })
+    // this.$http.post('http://47.74.217.233:3000/main/admin/auth/login',{
+    //   username:'xiongzhend',
+    //   password:123456
+    // }).then((res)=>{
+    //   console.log(res)
+    // })
   }
 }
 </script>

@@ -1,3 +1,4 @@
+import {shareConfig } from './shareConfig'
 export  function OS(){
             return (function () {
                 let u = navigator.userAgent;
