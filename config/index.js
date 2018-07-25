@@ -16,7 +16,7 @@ module.exports = {
 
     // Various Dev Server settings
     host: HOST, // can be overwritten by process.env.HOST// 地址
-    port: 3005, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined 
+    port: 9966, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined 
     autoOpenBrowser: true,// 是否编译后自动打开浏览器
     errorOverlay: true,//浏览器错误提示
     notifyOnErrors: true,//跨平台错误提示
