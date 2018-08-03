@@ -16,9 +16,17 @@ export default {
     }
   },
   created(){
-    this.$http.get('/cms/banner/list?type=home&_=1520416625859',{}).then((res)=>{
+    this.$http.get(process.env.HTTP.UPLOAD,{}).then((res)=>{
       console.log(res)
     })
+     // 设置页面标题
+    document.title = '首付多少了填那个'
+    // meta 标签描述设置
+    let description = document.querySelector("meta[name=description]")
+    description.setAttribute('content', '就烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦')
+    // meta 关键字设置 
+    let keywords = document.querySelector("meta[name=keywords]")
+    keywords.setAttribute('content', '天你你你你你你你你你你你你你你你你你你')
     // this.$http.post('http://47.74.217.233:3000/main/admin/auth/login',{
     //   username:'xiongzhend',
     //   password:123456

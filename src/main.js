@@ -13,6 +13,7 @@ import "./assets/sass/common/_global.scss";
 import "./assets/sass/common/_function.scss";
 // 前置守卫
 router.beforeEach((to, from, next) => {
+  console.log(document)
   // 设置页面标题
   document.title = to.meta.title
   // meta 标签描述设置
