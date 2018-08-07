@@ -10,7 +10,7 @@ const HD = r => require.ensure([],()=>r(require("@/components/activity/mine")),'
 Vue.use(Router)
 
 export default new Router({
-  // mode:'history',
+  mode:'history',
   routes: [
     {
       path: '/',

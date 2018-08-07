@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import store from './vuex/store'
 // 判断系统
-import { OS } from './utils'
+import { OS, setTKD } from './utils'
 //初始化微信分享功能
 import { initWxShare } from './utils/shareConfig'
 // 全局初始化样式
@@ -13,17 +13,10 @@ import "./assets/sass/common/_global.scss";
 import "./assets/sass/common/_function.scss";
 // 前置守卫
 router.beforeEach((to, from, next) => {
-  console.log(document)
-  // 设置页面标题
-  document.title = to.meta.title
-  // meta 标签描述设置
-  let description = document.querySelector("meta[name=description]")
-  description.setAttribute('content', to.meta.description)
-  // meta 关键字设置 
-  let keywords = document.querySelector("meta[name=keywords]")
-  keywords.setAttribute('content', to.meta.keywords)
-  // 兼容 ios 微信分享功能
-  if (OS().ios && to.path !== location.pathname) {
+  // 设置title keywords description
+  setTKD(to)
+  // 兼容 ios 微信分享功能 history 模式下只能在
+  if (OS().ios && to.path !== location.pathname && router.mode =="history") {
     // 此处不可使用location.replace
     location.assign(to.fullPath)
   }
