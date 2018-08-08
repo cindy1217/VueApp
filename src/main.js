@@ -20,6 +20,27 @@ router.beforeEach((to, from, next) => {
     // 此处不可使用location.replace
     location.assign(to.fullPath)
   }
+  // 登陆后置
+  if(to.meta.requireAuth && (localStorage.getItem('IS_LOGIN') === null || localStorage.getItem('IS_LOGIN') === "" )){
+    console.log('请登陆>>>>>>>>>>>>>>>>>')
+    next({
+      path:'/find',
+      query: {redirect: to.fullPath}
+    })
+  }
+  // 权限配置
+  switch(to.meta.role){
+    case 1 : 
+      console.log('您的角色需要为：1')
+      break;
+    case 2 :
+      console.log('您的角色需要为：2')
+      break;
+    case 3 :
+      console.log('您的角色需要为：3')
+    default:
+      console.log('您没有任何角色')
+  }
   next() 
 })
 // 后置守卫

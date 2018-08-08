@@ -17,6 +17,8 @@ export default new Router({
       name: '/',
       component: Home,
       meta:{
+        requireAuth:true,
+        role:1,
         title:'首页',
         description:'我是首页描述',
         keywords:'我是首页关键字'
@@ -27,6 +29,8 @@ export default new Router({
     	name: "home",
     	component : Home,
       meta:{
+        requireAuth:true,
+        role:1,
         title:'首页',
         description:'我是首页描述',
         keywords:'我是首页关键字'
@@ -37,6 +41,8 @@ export default new Router({
     	name:'HelloWorld',
     	component: HelloWorld,
       meta:{
+        requireAuth:true,
+        role:1,
         title:'你好世界',
         description:'你好世界描述',
         keywords:'你好世界关键字'
@@ -47,6 +53,8 @@ export default new Router({
       name:'Mine',
       component: Mine,
       meta:{
+        requireAuth:true,
+        role:1,
         title:'我的',
         description:'我的描述',
         keywords:'我的关键字'
@@ -57,6 +65,8 @@ export default new Router({
       name:'Find',
       component: Find,
       meta:{
+        requireAuth:false,
+        role:1,
         title:'寻找',
         description:'寻找描述',
         keywords:'寻找关键字'
