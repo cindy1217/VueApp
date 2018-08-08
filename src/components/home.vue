@@ -442,7 +442,7 @@
     },
     mounted() {
     var res = ( navigator.userAgent.toLowerCase().match(/qq/i) == 'qq') ? ( navigator.userAgent.toLowerCase().match(/mqqbrowser/i) == 'mqqbrowser' ? false : true ) : false
-      alert(res)
+      // alert(res)
       //alert( navigator.userAgent.toLowerCase().match(/mqqbrowser/i) == 'mqqbrowser' ? false : true )
     },
     beforeRouteEnter(to, from, next) {

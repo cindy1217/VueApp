@@ -33,6 +33,7 @@ export default {
     // }).then((res)=>{
     //   console.log(res)
     // })
+    //this.$router.push(this.$route.query.redirect)
   }
 }
 </script>
