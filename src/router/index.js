@@ -17,8 +17,8 @@ export default new Router({
       name: '/',
       component: Home,
       meta:{
-        requireAuth:true,
-        role:1,
+        requireAuth:true,// 登陆后置
+        role:1,// 权限设置
         title:'首页',
         description:'我是首页描述',
         keywords:'我是首页关键字'
@@ -29,8 +29,8 @@ export default new Router({
     	name: "home",
     	component : Home,
       meta:{
-        requireAuth:true,
-        role:1,
+        requireAuth:true,// 登陆后置
+        role:1,// 权限设置
         title:'首页',
         description:'我是首页描述',
         keywords:'我是首页关键字'
@@ -41,8 +41,8 @@ export default new Router({
     	name:'HelloWorld',
     	component: HelloWorld,
       meta:{
-        requireAuth:true,
-        role:1,
+        requireAuth:true,// 登陆后置
+        role:1,// 权限设置
         title:'你好世界',
         description:'你好世界描述',
         keywords:'你好世界关键字'

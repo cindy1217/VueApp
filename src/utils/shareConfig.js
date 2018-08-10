@@ -1,6 +1,6 @@
 import fetch from '../fetch'
 import wx from 'weixin-js-sdk'
-// console.log(process.env)
+//console.log(process.env.NODE_ENV == "development")
 // 该方法在main.js router.afterEach中调用
 export  function initWxShare(to) {
 			console.log(to)
@@ -24,7 +24,7 @@ export  function initWxShare(to) {
 			}).then(function (res) {
 				let configJson = res.data.data
 			  	wx.config({
-		            debug: true, // ETC 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+		            debug: (process.env.NODE_ENV == "development") ? true : false, // ETC 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
 		            appId: configJson.appid, // ETC 必填，公众号的唯一标识
 		            timestamp: configJson.timestamp, // ETC 必填，生成签名的时间戳
 		            nonceStr: configJson.nonceStr, // ETC 必填，生成签名的随机串

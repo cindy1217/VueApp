@@ -56,10 +56,7 @@ import fetch from './fetch'
 // 挂载到原型上
 Vue.prototype.$http = fetch
 
-
-
 Vue.config.productionTip = false
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -68,3 +65,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
