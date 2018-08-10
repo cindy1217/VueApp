@@ -14,14 +14,12 @@ import "./assets/sass/common/_global.scss";
 import "./assets/sass/common/_function.scss";
 // 前置守卫
 router.beforeEach((to, from, next) => {
-  // 设置title keywords description
-  setTKD(to)
   // 兼容 ios 微信分享功能 history 模式下只能在
   if (OS().ios && to.path !== location.pathname && router.mode =="history") {
     // 此处不可使用location.replace
     location.assign(to.fullPath)
   }
-  // 登陆后置
+  //登陆后置
   if(to.meta.requireAuth && (localStorage.getItem('IS_LOGIN') === null || localStorage.getItem('IS_LOGIN') === "" )){
     console.log('请登陆>>>>>>>>>>>>>>>>>')
     next({
@@ -42,10 +40,13 @@ router.beforeEach((to, from, next) => {
     default:
       console.log('您没有任何角色')
   }
+  // 设置title keywords description
+  setTKD(to)
   next() 
 })
 // 后置守卫
 router.afterEach((to, from) => {
+
   // 微信环境下初始化微信分享功能
   if(OS().weChat) {
     initWxShare(to)

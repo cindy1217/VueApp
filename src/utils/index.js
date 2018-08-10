@@ -24,7 +24,7 @@ export function setTKD (to) {
     if ( OS().ios && (OS().weChat) ) {
       let iframe = document.createElement('iframe');
       iframe.style.display = 'none';
-      iframe.src = '/favicon.ico';
+      iframe.src = '/static/molbase.ico';
       iframe.onload = () => {
           setTimeout(() => {
               document.body.removeChild(iframe);
