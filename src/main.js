@@ -12,6 +12,11 @@ import Messenger from './components/Messenger.vue'
 // 全局初始化样式
 import "./assets/sass/common/_global.scss";
 import "./assets/sass/common/_function.scss";
+// 无缝滚动
+import scroll from 'vue-seamless-scroll'
+Vue.use(scroll)
+
+
 // 前置守卫
 router.beforeEach((to, from, next) => {
   // 兼容 ios 微信分享功能 history 模式下只能在
