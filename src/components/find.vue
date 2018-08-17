@@ -1,28 +1,51 @@
 <template>
     <div>
-      <vue-seamless-scroll :data="newsList" :class-option="optionLeft" class="seamless-warp2">
+      <!-- <vue-seamless-scroll :data="newsList" :class-option="optionLeft" class="seamless-warp2">
           <ul class="item">
               <li v-for="(item,index) in newsList" :key="index">
                 <img :src="item.title" alt="" style="width:300px;height: 170px">
               </li>
           </ul>
-      </vue-seamless-scroll>
+      </vue-seamless-scroll> -->
+      <div class="swiper-container">
+        <ul class="swiper-wrapper">
+          <li class="swiper-slide" v-for="(item,index) in newsList" :key="index">
+            <img :src="item.title" :alt="index">
+          </li>
+        </ul>
+      </div>
     </div>
 </template>
 <style lang="scss" scoped>
-    .seamless-warp2 {
-        overflow: hidden;
-        height: 170px;
-        width: 1300px;
-        margin:100px auto;
-        background:#ccc;
-        .item {
-            width: 2656px;
-            li {
-                float: left;
-                margin-right: 32px;
-                background:red;
+    // .seamless-warp2 {
+    //     overflow: hidden;
+    //     height: 170px;
+    //     width: 1300px;
+    //     margin:100px auto;
+    //     background:#ccc;
+    //     .item {
+    //         width: 2656px;
+    //         li {
+    //             float: left;
+    //             margin-right: 32px;
+    //             background:red;
+    //         }
+    //     }
+    // }
+    .swiper-container{
+        width:300px;
+        height:200px;
+        background:pink;
+        margin:0 auto;
+        .swiper-wrapper{
+          .swiper-slide{
+            float:left;
+            align-items:center;
+            width:100px;
+            img{
+              width:100px;height:100px;
             }
+          }   
         }
     }
 </style>
@@ -66,6 +89,8 @@
                   limitMoveNum: 2
                 }
             }
+        },
+        mounted(){
         },
         components:{
           vueSeamlessScroll
