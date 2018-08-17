@@ -4,9 +4,9 @@ import Router from 'vue-router'
 const HelloWorld =  r =>  require.ensure([],() => r(require('@/components/HelloWorld')),'HelloWorld')
 const Home = r => require.ensure([],()=>r(require("@/components/home")),'home')
 const Mine = r => require.ensure([],()=>r(require("@/components/mine")),'mine')
-const Find = r => require.ensure([],()=>r(require("@/components/find")),'find')
+const Login = r => require.ensure([],()=>r(require("@/components/login")),'login')
 const HH = r => require.ensure([],()=>r(require("@/components/activity/home")),'home')
-const HD = r => require.ensure([],()=>r(require("@/components/activity/mine")),'mine')
+// const  = r => require.ensure([],()=>r(require("@/components/activity/mine")),'mine')
 Vue.use(Router)
 
 export default new Router({
@@ -61,15 +61,15 @@ export default new Router({
       },
     },
     {
-      path:"/Find",
-      name:'Find',
-      component: Find,
+      path:"/login",
+      name:'Login',
+      component: Login,
       meta:{
         requireAuth:false,
         role:1,
-        title:'寻找',
-        description:'寻找描述',
-        keywords:'寻找关键字'
+        title:'登陆',
+        description:'登陆描述',
+        keywords:'登陆关键字'
       },
     }
   ]
