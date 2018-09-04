@@ -7,7 +7,20 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  HTTP: {
+  // 测试环境
+  // HTTP: {
+  // 	BASE_URL: '"http://fapi.uneedme.cn/"',
+  // 	UPLOAD: '"http://47.74.217.233:3000/main/admin/news/uploadimage"'
+  // },
+  // appId:'"wx5fbc1df873478202"',
+  // 预发布环境
+  //  HTTP: {
+  // 	BASE_URL: '"http://fapi.uneedme.cn/"',
+  // 	UPLOAD: '"http://47.74.217.233:3000/main/admin/news/uploadimage"'
+  // },
+  // appId:'"wx5fbc1df873478202"',
+  // 生产环境
+   HTTP: {
   	BASE_URL: '"http://fapi.uneedme.cn/"',
   	UPLOAD: '"http://47.74.217.233:3000/main/admin/news/uploadimage"'
   },
