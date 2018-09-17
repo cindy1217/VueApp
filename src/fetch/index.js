@@ -17,10 +17,10 @@ AxiosFetch.interceptors.request.use((config) => {
   // 增加时间戳，防止拉取缓存
   switch(config.method){
     case 'get':
-      !!config.params ? config.params._t = new Date().getTime() : config.params = { _t: new Date().getTime() }
+      !!config.params ? config.params._ = new Date().getTime() : config.params = { _: new Date().getTime() }
     break;
     case 'post':
-      !!config.data ? config.data._t = new Date().getTime() : config.data = { _t: new Date().getTime() }
+      !!config.data ? config.data._ = new Date().getTime() : config.data = { _: new Date().getTime() }
     break;
     default:
   }

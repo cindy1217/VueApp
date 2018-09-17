@@ -35,11 +35,13 @@ d<template>
 
 
     <li v-for="(item,index) in arr" :key="index" ref="Li_height">
-      <span :class="item.name" class="dd">{{item.title}}</span>
+      <span :class="item.name" class="dd">{{item.keyword}}</span>
     </li> 
   </div>
 </template>
 <script>
+  import {login} from '@/fetch/api'
+  console.log(login)
   export default {
     data () {
       return {
@@ -49,14 +51,7 @@ d<template>
           sizeName:'',
           height_1:0  
         },
-        arr:[
-          {title:'属性1',name:'55'},
-          {title:'属性2',name:"2"},
-          {title:'属性3',name:'3'},
-          {title:'属性4',name:'4'},
-          {title:'属性5',name:'5'},
-          {title:'属性6',name:""}
-        ],
+        arr:[],
         aa:0,
         bb:0,
         cc:0,
@@ -79,12 +74,45 @@ d<template>
       this.array1.push(this.bb)
       this.array1.push(this.cc)
       console.log(this.array1)
-      this.getHeight()
-      this.$http.get('/api').then(()=>{
-        console.log(111)
+      this.getDate()
+      //this.getPhoneCode()
+      login().then((res)=>{
+        console.log(res)
       })
     },
     methods:{
+      // getPhoneCode(){
+      //   this.$http.get('/User/AuthCode',{
+      //     params:{
+      //       mobile:15573139487,
+      //       wy:true
+      //     }
+      //   }).then((res)=>{
+      //     console.log(res)
+      //   }).catch((error) => {
+      //     console.log(error)
+      //   })
+      // },
+      getDate(){
+        //https://api.uneedme.cn/User/AuthCode?mobile=15573139487&wy=true&_=1537176530584
+        //https://api.uneedme.cn
+        this.$http.get('/inquiry/outpatientInfo/getOutpatientInfos',{
+          params:{
+            size:10,
+            page:1,
+            code:'MZ00010'
+          }
+        }).then((res)=>{
+          if(res.data.code == '0000'){
+            this.arr = res.data.data
+            setTimeout(()=>{
+              this.getHeight()
+            }, 0);
+          }
+        }).catch((error)=>{
+          console.log(error)
+        })
+      },
       getBrand(name){
         this.mm.brand=name
       },
@@ -110,6 +138,8 @@ d<template>
         if(!!this.$refs.Li_height){
           this.height_1 = this.$refs.Li_height[0].offsetHeight
           console.log(this.height_1)
+        }else {
+          console.log(111)
         }
       }
     }
