@@ -1,10 +1,10 @@
-<template>
+d<template>
   <div>
     <button class="wechat_login" ref="aaaa" @click="weChatLogin">使用微信账号登陆</button>
     <div class="wechatLogin">
       <h4>属性1</h4>
       <div class="bb">
-        <li @click="getBrand('属性1')">属性1</li>
+        <li @click="getBrand('属性1')">属性</li>
         <li @click="getBrand('属性2')">属性2</li>
         <li @click="getBrand('属性3')">属性3</li>
         <li @click="getBrand('属性4')">属性4</li>
@@ -32,6 +32,11 @@
       <h5>更多</h5>
     </div>
     <div>{{mm.brand}}/{{mm.colorName}}/{{mm.sizeName}}</div>
+
+
+    <li v-for="(item,index) in arr" :key="index" ref="Li_height">
+      <span :class="item.name" class="dd">{{item.title}}</span>
+    </li> 
   </div>
 </template>
 <script>
@@ -41,12 +46,28 @@
         mm:{
           brand:'',
           colorName:'',
-          sizeName:''  
-        }
+          sizeName:'',
+          height_1:0  
+        },
+        arr:[
+          {title:'属性1',name:'55'},
+          {title:'属性2',name:"2"},
+          {title:'属性3',name:'3'},
+          {title:'属性4',name:'4'},
+          {title:'属性5',name:'5'},
+          {title:'属性6',name:""}
+        ],
+        aa:0,
+        bb:0,
+        cc:0,
+        array1:[]
       }
     },
     watch:{
       mm:function(n,o){
+        console.log(n)
+      },
+      height_1(n,o){
         console.log(n)
       }
     },
@@ -54,6 +75,14 @@
       var res = document.querySelector('.wechatLogin')
       console.log(res.offsetHeight)
       console.log(this.$route.fullPath)
+      this.array1.push(this.aa)
+      this.array1.push(this.bb)
+      this.array1.push(this.cc)
+      console.log(this.array1)
+      this.getHeight()
+      this.$http.get('/api').then(()=>{
+        console.log(111)
+      })
     },
     methods:{
       getBrand(name){
@@ -75,6 +104,12 @@
           redirectURL = window.location.href.split(`code=${this.$route.query.code}`).join('')
         } else {
           redirectURL = window.location.href
+        }
+      },
+      getHeight(){
+        if(!!this.$refs.Li_height){
+          this.height_1 = this.$refs.Li_height[0].offsetHeight
+          console.log(this.height_1)
         }
       }
     }

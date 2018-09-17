@@ -4,7 +4,6 @@ const AxiosFetch = axios;
 // 使用axios来发ajax
 // 增加一个拦截器，当method为form时，使用表单提交的方式
 // 使用qs包将data转为表单数据
-
 AxiosFetch.interceptors.request.use((config) => {
   if (config.method === 'form') {
     config.method = 'post'

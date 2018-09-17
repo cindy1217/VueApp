@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // 实现按需加载，require.ensure(dependencies: String[], callback: function(require), chunkName: String)
-const HelloWorld =  r =>  require.ensure([],() => r(require('@/components/HelloWorld')),'HelloWorld')
+const Search =  r =>  require.ensure([],() => r(require('@/components/HelloWorld')),'HelloWorld')
 const Home = r => require.ensure([],()=>r(require("@/components/home")),'home')
 const Mine = r => require.ensure([],()=>r(require("@/components/mine")),'mine')
 const Login = r => require.ensure([],()=>r(require("@/components/login")),'login')
@@ -10,7 +10,7 @@ const HH = r => require.ensure([],()=>r(require("@/components/activity/home")),'
 Vue.use(Router)
 
 export default new Router({
-  mode:'history',
+  //mode:'history',
   routes: [
     {
       path: '/',
@@ -37,9 +37,9 @@ export default new Router({
       },
     },
     {
-    	path:"/HelloWorld",
-    	name:'HelloWorld',
-    	component: HelloWorld,
+    	path:"/search",
+    	name:'search',
+    	component: Search,
       meta:{
         requireAuth:true,// 登陆后置
         role:1,// 权限设置

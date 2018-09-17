@@ -22,8 +22,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 // js 压缩插件
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-// 引入 prod.env 配置
-const env = require('../config/prod.env')
+// 引入 prod.env 配置  配置打包环境
+const env = process.env.npm_config_test ? require('../config/test.env') : require('../config/prod.env')
 // 合并对象， 并继承 webpack.base.config.js 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
