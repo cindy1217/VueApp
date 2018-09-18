@@ -63,9 +63,6 @@
           }
         },
         mounted(){
-          this.$http.get('/api').then(()=>{
-            console.log(111)
-          })
         },
         components:{
           vueSeamlessScroll

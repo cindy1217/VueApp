@@ -10,8 +10,9 @@ import { OS, setTKD } from './utils'
 import { initWxShare } from './utils/shareConfig'
 import Messenger from './components/Messenger.vue'
 // 全局初始化样式
-import "./assets/sass/common/_global.scss";
-import "./assets/sass/common/_function.scss";
+import './assets/sass/common/_global.scss'
+import './assets/sass/common/_function.scss'  
+import './mock'
 // 无缝滚动
 import scroll from 'vue-seamless-scroll'
 Vue.use(scroll)

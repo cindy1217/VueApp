@@ -37,6 +37,9 @@ d<template>
     <li v-for="(item,index) in arr" :key="index" ref="Li_height">
       <span :class="item.name" class="dd">{{item.keyword}}</span>
     </li> 
+    <div>
+      <img :src="mockData.pic" alt="">
+    </div>
   </div>
 </template>
 <script>
@@ -55,7 +58,8 @@ d<template>
         aa:0,
         bb:0,
         cc:0,
-        array1:[]
+        array1:[],
+        mockData:''
       }
     },
     watch:{
@@ -78,6 +82,10 @@ d<template>
       //this.getPhoneCode()
       login().then((res)=>{
         console.log(res)
+      })
+      this.$http.get('/user').then((res) => {
+        console.log(res.data.data,'wwowowow')
+        this.mockData = res.data.data
       })
     },
     methods:{
