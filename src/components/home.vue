@@ -83,7 +83,7 @@ d<template>
       login().then((res)=>{
         console.log(res)
       })
-      this.$http.get('/user').then((res) => {
+      this.$http.get('/login').then((res) => {
         console.log(res.data.data,'wwowowow')
         this.mockData = res.data.data
       })

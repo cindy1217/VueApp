@@ -15,6 +15,12 @@ const loginData = (opt) => {
 	//}
 	return {data:data}
 }
-Mock.mock(/\/user/,'get', loginData)
-
+const loginOutData = () => {
+	let data = {
+		msg:'suscess'
+	}
+	return {data:data}
+}
+Mock.mock(/\/login/,'get', loginData)
+Mock.mock(/\/loginOut/,'get', loginData)
 export default Mock
