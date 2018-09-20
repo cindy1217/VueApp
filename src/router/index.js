@@ -6,7 +6,7 @@ const Home = r => require.ensure([],()=>r(require("@/components/home")),'home')
 const Login = r => require.ensure([],()=>r(require("@/components/login")),'login')
 Vue.use(Router)
 export default new Router({
-  mode:'history',
+  //mode:'history',
   routes: [
     {
       path: '/',
