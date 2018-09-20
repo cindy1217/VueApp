@@ -8,7 +8,6 @@ import store from './vuex/store'
 import { OS, setTKD } from './utils'
 //初始化微信分享功能
 import { initWxShare } from './utils/shareConfig'
-import Messenger from './components/Messenger.vue'
 // 全局初始化样式
 import './assets/sass/common/_global.scss'
 import './assets/sass/common/_function.scss'  

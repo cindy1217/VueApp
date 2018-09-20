@@ -1,16 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // 实现按需加载，require.ensure(dependencies: String[], callback: function(require), chunkName: String)
-const Search =  r =>  require.ensure([],() => r(require('@/components/HelloWorld')),'HelloWorld')
+const Search =  r =>  require.ensure([],() => r(require('@/components/search')),'search')
 const Home = r => require.ensure([],()=>r(require("@/components/home")),'home')
-const Mine = r => require.ensure([],()=>r(require("@/components/mine")),'mine')
 const Login = r => require.ensure([],()=>r(require("@/components/login")),'login')
-const HH = r => require.ensure([],()=>r(require("@/components/activity/home")),'home')
-// const  = r => require.ensure([],()=>r(require("@/components/activity/mine")),'mine')
 Vue.use(Router)
-
 export default new Router({
-  //mode:'history',
+  mode:'history',
   routes: [
     {
       path: '/',
@@ -49,20 +45,8 @@ export default new Router({
       },
     },
     {
-      path:"/Mine/:id",
-      name:'Mine',
-      component: Mine,
-      meta:{
-        requireAuth:true,
-        role:1,
-        title:'我的',
-        description:'我的描述',
-        keywords:'我的关键字'
-      },
-    },
-    {
       path:"/login",
-      name:'Login',
+      name:'login',
       component: Login,
       meta:{
         requireAuth:false,
