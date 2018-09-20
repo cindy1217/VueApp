@@ -1,9 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // 实现按需加载，require.ensure(dependencies: String[], callback: function(require), chunkName: String)
-const Search =  r =>  require.ensure([],() => r(require('@/components/search')),'search')
-const Home = r => require.ensure([],()=>r(require("@/components/home")),'home')
-const Login = r => require.ensure([],()=>r(require("@/components/login")),'login')
+// const Search =  r =>  require.ensure([],() => r(require('@/components/search')),'search')
+// const Home = r => require.ensure([],()=>r(require("@/components/home")),'home')
+// const Login = r => require.ensure([],()=>r(require("@/components/login")),'login')
+//es6 按需引入
+const Search =  () => import(/*webpackChunkName: search*/ '@/components/search')
+const Home = () => import(/*webpackChunkName: home*/ "@/components/home")
+const Login = () => import(/*webpackChunkName: login*/ "@/components/login")
+
+
 Vue.use(Router)
 export default new Router({
   //mode:'history',
