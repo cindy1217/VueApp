@@ -27,10 +27,11 @@ router.beforeEach((to, from, next) => {
     location.assign(to.fullPath)
   }
   //登陆后置
-  if(to.meta.requireAuth && (localStorage.getItem('IS_LOGIN') === null || localStorage.getItem('IS_LOGIN') === "" )){
+  if(to.meta.requireAuth && (localStorage.getItem('loginStatus') !== "true")){
     console.log('请登陆>>>>>>>>>>>>>>>>>')
-    return next({ path:'/login', query: {redirect: to.fullPath} })
+    return next({ path:'/login', query: {login_URL: to.fullPath} })
   }else {
+      //store.dispatch('getUserInfo')
       // 权限配置
       switch(to.meta.role){
         case 1 : 

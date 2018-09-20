@@ -10,6 +10,11 @@ AxiosFetch.interceptors.request.use((config) => {
     config.data = qs.stringify(config.data)
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
   }
+  // post 请求以formdata 形式上传 不用注释
+  if(config.method === 'post'){
+    config.data = qs.stringify(config.data)
+    config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+  }
   // 设置公共origin
   config.baseURL = process.env.HTTP.BASE_URL
   // 设置超时时间
@@ -18,9 +23,6 @@ AxiosFetch.interceptors.request.use((config) => {
   switch(config.method){
     case 'get':
       !!config.params ? config.params._ = new Date().getTime() : config.params = { _: new Date().getTime() }
-    break;
-    case 'post':
-      !!config.data ? config.data._ = new Date().getTime() : config.data = { _: new Date().getTime() }
     break;
     default:
   }

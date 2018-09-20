@@ -1,5 +1,19 @@
 <template>
-    <div>
+    <div class="user_Info_box">
+      <div>
+        <label for="user_mobile">手机</label> 
+        <input type="text" id="user_mobile" />
+      </div>
+      <div>
+        <label for="user_code">验证码</label>
+        <input type="text" id="user_code" />
+        <p>
+          <span>获取验证码</span>
+          <span>已发送(60s)</span>
+          <span>发送失败</span>
+          <span>重新获取</span>
+        </p>
+      </div>
       <div class="login_submit" @click="login">登陆</div>
     </div>
 </template>
@@ -7,21 +21,33 @@
     export default {
         data () {
           return {
+            userInfo:{
+              mobile:'15573139487',
+              code:'123456',
+              wy:true
+            },
+            login_URL:''
           }
         },
         methods:{
+          //登录
           login () {
-            localStorage.setItem('IS_LOGIN',true)
-            if(!!this.$route.query.redirect) {
-              this.$router.push(this.$route.query.redirect)
-            } else {
-              this.$router.push('/')
-            }
+            //登录后置路径
+            this.login_URL = this.$route.query.login_URL || '/' 
+            this.$store.dispatch('login',{
+              userInfo:this.userInfo,
+              login_URL:this.login_URL
+            })
           }
         },
+        mounted() {
+        }
     }
 </script>
 <style lang="scss" scoped>
+    .user_Info_box{
+      padding: 15px;
+    }
     .login_submit{
       width:190px;
       height:50px;
@@ -33,3 +59,4 @@
       color:#fff;
     }
 </style>
+

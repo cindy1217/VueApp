@@ -1,21 +1,34 @@
 import * as types from '../types'
-import fetch from '@/fetch'
-
+import $http from '@/fetch'
+import router from '@/router'
+import { login } from '@/fetch/api'
 const state = {
   loginStatus: !!localStorage.getItem('loginStatus') || false,
 }
-
 const actions = {
-  setUserInfo ({ commit }, status) {
-    localStorage.setItem('loginStatus', true)
-    commit(types.SET_LOGIN_STATUS, true)
+  login({commit}, {userInfo, login_URL}) {
+    return new Promise((resolve, reject) => {
+      login(userInfo).then((res) => {
+        console.log(res)
+        // 成功进入
+        if(res.data.code === "1002") {
+          localStorage.setItem('loginStatus',true)
+          return router.push(login_URL)
+        } else {
+          console.log('>>>>>>>>>>>>> 服务异常')
+        } 
+        resolve()
+      }).catch((error) => {
+        console.log('稍后再试')
+      })
+    })
   },
-  setSignOut ({ commit }) {
-    localStorage.removeItem('loginStatus')
-    commit(types.SET_LOGIN_STATUS, false)
-  },
-  getUserInfo({ commit }, status){
-
+  getAuthCode(){
+    return new Promise((resolve, reject) => {
+      $http.get('/User/AuthCode').then((res) => {
+        console.log('用户信息配置')
+      })
+    })
   }
 }
 
