@@ -1,32 +1,45 @@
 <template>
     <div class="user_Info_box">
-      <div>
+      <div class="phone_number">
         <label for="user_mobile">手机</label> 
-        <input type="text" id="user_mobile" />
+        <input type="tel" id="user_mobile" v-model="userInfo.mobile" maxlength="11" placeholder="请输入手机号码"/>
       </div>
-      <div>
-        <label for="user_code">验证码</label>
-        <input type="text" id="user_code" />
-        <p>
+      <div class="phone_number code_number">
+        <label for="user_code" >验证码</label>
+        <input type="tel" id="user_code" v-model="userInfo.code" placeholder="请输入短信验证码" maxlength="6"/>
+        <p :class="{phone_reg:phoneReg}" @click="getAuthCode">
           <span>获取验证码</span>
-          <span>已发送(60s)</span>
+          <!-- <span>已发送(60s)</span>
           <span>发送失败</span>
-          <span>重新获取</span>
+          <span>重新获取</span> -->
         </p>
       </div>
       <div class="login_submit" @click="login">登陆</div>
     </div>
 </template>
 <script>
+    import { checkPhone } from '@/utils'
     export default {
         data () {
           return {
             userInfo:{
-              mobile:'15573139487',
-              code:'123456',
-              wy:true
+              mobile: '',
+              code: '',
+              wy: true
             },
-            login_URL:''
+            phoneReg: false,
+            login_URL: ''
+          }
+        },
+        watch:{
+          userInfo:{
+            handler(n,o){
+              if(checkPhone(n.mobile)){
+                return this.phoneReg = true 
+              }
+              return this.phoneReg = false
+            },
+            deep:true 
           }
         },
         methods:{
@@ -37,7 +50,20 @@
             this.$store.dispatch('login',{
               userInfo:this.userInfo,
               login_URL:this.login_URL
+            }).then((res) => {
+              console.log(res)
             })
+          },
+          getAuthCode() {
+            if(this.phoneReg){
+              this.$store.dispatch('getAuthCode',{
+                mobile:this.userInfo.mobile,
+                wy: true,
+              }).then((res) => {
+                console.log(res)
+                this.phoneReg = false
+              })
+            }
           }
         },
         mounted() {
@@ -45,18 +71,60 @@
     }
 </script>
 <style lang="scss" scoped>
+    @import'@/assets/sass/common/_function.scss';
     .user_Info_box{
-      padding: 15px;
+      padding: ptr(15);
+      .phone_number{
+        display: flex;
+        background: #fff;
+        line-height: ptr(50);
+        border-radius: ptr(5);
+        align-items: center;
+        padding:0 ptr(15);
+        justify-content: flex-start;
+        position: relative;
+        label{
+          font-size: ptr(15);
+          color: #333;
+          width: ptr(68);
+        }
+        input{
+          font-size: ptr(15);
+          color:#333;
+          width: ptr(150);
+          line-height: ptr(50);
+        }
+        p{
+          width: ptr(100);
+          height: ptr(30);
+          display: flex;
+          align-items: center;
+          position: absolute;
+          right: ptr(15);
+          top: 50%;
+          transform: translateY(-50%);
+          justify-content: center;
+          border-radius: ptr(4);
+          background: #bdbdbd;
+          color:#fff;
+          font-size: ptr(14);
+        }
+        .phone_reg{
+          background: #ff7070;
+        }
+      }
+      .code_number{
+        margin-top: ptr(10);
+      }
+      .login_submit{
+        background: #ff7070;
+        border-radius: ptr(5);
+        margin: ptr(30) auto;
+        text-align: center;
+        line-height: ptr(50);
+        color: #fff;
+        font-size: ptr(16);
+      }
     }
-    .login_submit{
-      width:190px;
-      height:50px;
-      background:#4263B7;
-      border-radius:5px;
-      margin:0 auto;
-      text-align:center;
-      line-height:50px;
-      color:#fff;
-    }
+    
 </style>
-

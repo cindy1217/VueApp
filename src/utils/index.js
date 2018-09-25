@@ -39,3 +39,11 @@ export function setTKD (to) {
     let keywords = document.querySelector("meta[name=keywords]")
     keywords.setAttribute('content', to.meta.keywords)
 }
+  
+export function checkPhone(num) {
+  let RegNum = /^1(3|4|5|6|7|8|9)\d{9}$/
+  if(!RegNum.test(num)){
+    return false
+  }
+  return true 
+}
