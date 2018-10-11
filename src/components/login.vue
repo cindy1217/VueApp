@@ -7,11 +7,10 @@
       <div class="phone_number code_number">
         <label for="user_code" >验证码</label>
         <input type="tel" id="user_code" v-model="userInfo.code" placeholder="请输入短信验证码" maxlength="6"/>
-        <p :class="{phone_reg:phoneReg}" @click="getAuthCode">
-          <span>获取验证码</span>
-          <!-- <span>已发送(60s)</span>
-          <span>发送失败</span>
-          <span>重新获取</span> -->
+        <p :class="{phone_reg:phoneReg}">
+          <span  @click="getAuthCode" v-if="countDown === 60">获取验证码</span>
+          <span v-if="countDown < 60 && countDown > 0" class="count_down">已发送({{countDown}}s)</span>
+          <span v-if="countDown === 0" @click="getAuthCode">重新获取</span>
         </p>
       </div>
       <div class="login_submit" @click="login">登陆</div>
@@ -28,7 +27,8 @@
               wy: true
             },
             phoneReg: false,
-            login_URL: ''
+            login_URL: '',
+            countDown:60,
           }
         },
         watch:{
@@ -47,12 +47,28 @@
           login () {
             //登录后置路径
             this.login_URL = this.$route.query.login_URL || '/' 
-            this.$store.dispatch('login',{
-              userInfo:this.userInfo,
-              login_URL:this.login_URL
-            }).then((res) => {
-              console.log(res)
-            })
+            if(!this.userInfo.mobile){
+              console.log('手机号不能为空>>>')
+            } else if(!this.userInfo.code) {
+              console.log("验证码不能为空")
+            } else {
+              this.$store.dispatch('login',{
+                userInfo:this.userInfo,
+                login_URL:this.login_URL
+              }).then((res) => {
+                console.log(res)
+              })
+            }
+          },
+          getCountDown() {
+            this.countDown = 59
+            let timeCount = setInterval(() => {
+              this.countDown--
+              if(this.countDown <= 0){
+                clearInterval(timeCount);
+                this.countDown = 0
+              }
+            }, 1000);
           },
           getAuthCode() {
             if(this.phoneReg){
@@ -60,13 +76,18 @@
                 mobile:this.userInfo.mobile,
                 wy: true,
               }).then((res) => {
-                console.log(res)
-                this.phoneReg = false
+                if(res.data.code === "0000"){
+                  return this.getCountDown()  
+                }
+                return alert('获取验证码失败,请稍后重试')
+              }).catch((error) => {
+                console.log(error)
               })
             }
           }
         },
-        mounted() {
+        beforeCreate(){
+          console.log(this.$route.matched[0].meta)
         }
     }
 </script>
@@ -108,6 +129,16 @@
           background: #bdbdbd;
           color:#fff;
           font-size: ptr(14);
+          span{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: ptr(30);
+            border-radius: ptr(4);
+          }
+          .count_down{
+            background: #bdbdbd;
+          }
         }
         .phone_reg{
           background: #ff7070;

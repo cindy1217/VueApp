@@ -3,7 +3,8 @@ import $http from '@/fetch'
 import router from '@/router'
 import { login, getAuthCode} from '@/fetch/api'
 const state = {
-  loginStatus: !!localStorage.getItem('loginStatus') || false,
+  loginStatus: (localStorage.getItem('loginStatus') == 'true') || false,
+  bblinkToken: localStorage.getItem('bblinkToken') || '',
 }
 const actions = {
   login({commit}, {userInfo, login_URL}) {
@@ -12,14 +13,15 @@ const actions = {
         // 成功进入
         if(res.data.code === "0000") {
           localStorage.setItem('loginStatus',true)
+          localStorage.setItem('bblinkToken',res.data.data.bblinkToken)
           commit(types.SET_LOGIN_STATUS,true)
           router.push(login_URL)
         } else {
-          console.log('>>>>>>>>>>>>> 服务异常')
+          console.log(`${res.data.msg}>>>>>>>>>>>>> `)
         } 
-        resolve()
+        resolve(1)
       }).catch((error) => {
-        console.log('稍后再试')
+        console.log('服务器异常，稍后再试>>>>>')
       })
     })
   },
@@ -31,7 +33,6 @@ const actions = {
         console.log('稍后再试')
         reject()
       })
-
     })
   }
 }

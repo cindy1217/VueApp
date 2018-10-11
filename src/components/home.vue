@@ -20,7 +20,10 @@ d<template>
         } else {
           redirectURL = window.location.href
         }
-      }
+      },
+    },
+    created(){
+      console.log(this.$route.meta)
     }
   }
 </script>

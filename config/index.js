@@ -27,7 +27,7 @@ module.exports = {
      */
 
     // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',//增加调试，该属性为原始源代码（仅限行）不可在生产环境中使用
+    devtool: 'inline-source-map',//增加调试，该属性为原始源代码（仅限行）不可在生产环境中使用
 
     // If you have problems debugging vue-files in devtools,
     // set this to false - it *may* help
