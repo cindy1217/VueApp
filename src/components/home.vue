@@ -8,7 +8,42 @@ d<template>
   export default {
     data () {
       return {
-        mockData:''
+        mockData:'',
+        arr:[
+          {
+            data:[
+              {name:1},
+              {name:1},
+              {name:1},
+              {name:1},
+              {name:1},
+              {name:1},
+              {name:1},
+            ]
+          },
+          {
+            data:[
+              {name:2},
+              {name:2},
+              {name:2},
+              {name:2},
+              {name:2},
+              {name:2},
+              {name:2},
+            ]
+          },
+          {
+            data:[
+              {name:3},
+              {name:3},
+              {name:3},
+              {name:3},
+              {name:3},
+              {name:3},
+              {name:3},
+            ]
+          }
+        ]
       }
     },
     methods:{
@@ -23,7 +58,14 @@ d<template>
       },
     },
     created(){
-      console.log(this.$route.meta)
+     // this.arr.map((item,index) => {
+     //  var res = []
+     //  for(let i= 0;i < Math.ceil(item.data.length / 3);i++){        
+     //    res.push(item.data.slice(i*3,i*3+3))
+     //  }      
+     //  return item.data = res
+     // })
+     // console.log(this.arr)
     }
   }
 </script>

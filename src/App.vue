@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-  	<headerComponent></headerComponent>
     <router-view/>
   </div>
 </template>
@@ -11,7 +10,7 @@ export default {
   name: 'App',
   data () {
   	return {
-  		title:"我的"
+  		title:""
   	}
   },
   created(){
