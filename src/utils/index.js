@@ -19,7 +19,7 @@ export  function OS(){
 
 export function setTKD (to) {
     // 设置页面标题
-    document.title = to.meta.title
+    document.title = to.meta.title || '6666'
     //兼容老版本不能设置title
     if ( OS().ios && (OS().weChat) ) {
       let iframe = document.createElement('iframe');

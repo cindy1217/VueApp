@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-  export default {
+export default {
     data() {
       return {
         currentIndex:1,// 控制背景
@@ -123,6 +123,42 @@
               }
             ] 
           },
+        ],
+        mockData:'',
+        arr:[
+          {
+            data:[
+              {name:1},
+              {name:1},
+              {name:1},
+              {name:1},
+              {name:1},
+              {name:1},
+              {name:1},
+            ]
+          },
+          {
+            data:[
+              {name:2},
+              {name:2},
+              {name:2},
+              {name:2},
+              {name:2},
+              {name:2},
+              {name:2},
+            ]
+          },
+          {
+            data:[
+              {name:3},
+              {name:3},
+              {name:3},
+              {name:3},
+              {name:3},
+              {name:3},
+              {name:3},
+            ]
+          }
         ]
       }
     },
@@ -131,7 +167,6 @@
         if(this.currentIndex < this.showArr.length){
           this.currentIndex++  
         }
-
         if(this.startIndex < this.arr.length - 3){
           this.startIndex++
           this.currentIndex = this.currentIndex-1
@@ -184,7 +219,7 @@
       })
       console.log(Bao,'包',Zi,'子',Da,'大',Ren,'人')
     }
-  }
+}
 </script>
 <style lang="scss">
   dl {

@@ -6,6 +6,10 @@ import router from './router'
 import store from './vuex/store'
 // 判断系统
 import { OS, setTKD } from './utils'
+// 封装fetch
+import fetch from './fetch'
+// 挂载到原型上
+Vue.prototype.$http = fetch
 //初始化微信分享功能
 import { initWxShare } from './utils/shareConfig'
 // 全局初始化样式
@@ -14,11 +18,19 @@ import './assets/sass/common/_function.scss'
 import './mock'
 // 无缝滚动
 import scroll from 'vue-seamless-scroll'
+const Log = () => import(/*webpackChunkName: "login"*/ "@/components/aa/log.vue")
+const ayncRouter = [{path:'/log',name:'/log',component:Log,meta:{requireAuth:true,role:1,title:'日志',description:'我是日志关秒速',keywords:'我是日志关键字'}}]
+fetch.get('/permission',).then((res) => {
+    console.log(2)
+    router.addRoutes(ayncRouter)
+})
+// router.addRoutes(ayncRouter)
+// console.log(router)
 Vue.use(scroll)
-
-
 // 前置守卫
 router.beforeEach((to, from, next) => {
+  console.log(3)
+  console.log(to)
   // 设置title keywords description
     setTKD(to)
   // 兼容 ios 微信分享功能 history 模式下只能在
@@ -56,11 +68,6 @@ router.afterEach((to, from) => {
     initWxShare(to)
   }
 })
-// 封装fetch
-import fetch from './fetch'
-// 挂载到原型上
-Vue.prototype.$http = fetch
-
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

@@ -5,14 +5,14 @@ import Router from 'vue-router'
 // const Home = r => require.ensure([],()=>r(require("@/components/home")),'home')
 // const Login = r => require.ensure([],()=>r(require("@/components/login")),'login')
 //es6 按需引入
-const Search =  () => import(/*webpackChunkName: "search"*/ '@/components/search')
+const ErrorPage =  () => import(/*webpackChunkName: "search"*/ '@/components/search')
 const Home = () => import(/*webpackChunkName: "home"*/ "@/components/home")
 const Login = () => import(/*webpackChunkName: "login"*/ "@/components/login")
 
-
+console.log(1)
 Vue.use(Router)
 export default new Router({
-  //mode:'history',
+  mode:'history',
   routes: [
     {
       path: '/',
@@ -39,13 +39,13 @@ export default new Router({
       },
     },
     {
-    	path:"/search",
-    	name:'search',
-    	component: Search,
+    	path:"/404",
+    	name:'404',
+    	component: ErrorPage,
       meta:{
         requireAuth:true,// 登陆后置
         role:1,// 权限设置
-        title:'你好世界',
+        title:'404',
         description:'你好世界描述',
         keywords:'你好世界关键字'
       },
