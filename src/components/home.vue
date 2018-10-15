@@ -1,44 +1,45 @@
 <template>
   <div>
+
   </div>
 </template>
 <script>
-  import { login } from '@/fetch/api'
-  export default {
-    data () {
+export default {
+    data() {
       return {
-      }
-    },
-    methods:{
-      
+      }  
     }
-  }
+}
 </script>
-<style scoped lang="scss">
-  .wechat_login{
-    height:50px;
-    background:#74CE57;
-    border-radius:5px;
-    width:100%;
-    font-size:14px;
-    color:#fff;
-  }
-  .wechatLogin{
-    width:300px;
-    display: flex;
-    justify-content: flex-start;
-    align-items:top;
-    >h4{
-      width:40px;
+<style lang="scss">
+  dl {
+    width: 300px;
+    height: 30px;
+    background: #fff;
+    margin: 50px auto;
+    display:flex;
+    justify-content: space-between;
+    dt,dd{
+      background:#ccc;
+      width: 30px;
+      line-height:30px;
+      text-align:center;
     }
-    .bb{
+    ul{
       flex:1;
-      >li{
-        height:20px;
+      display:flex;
+      justify-content: space-around;
+      li{
+        width:30px;
+        box-sizing:border-box;
+        height: 30px;
+        border:1px solid red;
+        text-align:center;
+        line-height:30px;
       }
-    }
-    h5{
-      width:40px;
-    }
+      .active{
+        background:red;
+      }
+    }  
   }
 </style>
