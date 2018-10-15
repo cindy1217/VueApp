@@ -20,7 +20,6 @@ export default new Router({
       component: Home,
       meta:{
         requireAuth:true,// 登陆后置
-        role:1,// 权限设置
         title:'首页',
         description:'我是首页描述',
         keywords:'我是首页关键字'
@@ -32,7 +31,6 @@ export default new Router({
     	component : Home,
       meta:{
         requireAuth:true,// 登陆后置
-        role:1,// 权限设置
         title:'首页',
         description:'我是首页描述',
         keywords:'我是首页关键字'
@@ -44,7 +42,6 @@ export default new Router({
     	component: ErrorPage,
       meta:{
         requireAuth:true,// 登陆后置
-        role:1,// 权限设置
         title:'404',
         description:'你好世界描述',
         keywords:'你好世界关键字'
@@ -56,7 +53,6 @@ export default new Router({
       component: Login,
       meta:{
         requireAuth:false,
-        role:1,
         title:'登陆',
         description:'登陆描述',
         keywords:'登陆关键字'
