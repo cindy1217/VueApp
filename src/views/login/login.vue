@@ -132,9 +132,10 @@
           span{
             width: 100%;
             height: 100%;
-            text-align: center;
-            line-height: ptr(30);
             border-radius: ptr(4);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
           }
           .count_down{
             background: #bdbdbd;
