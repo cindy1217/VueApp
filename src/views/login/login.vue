@@ -157,5 +157,4 @@
         font-size: ptr(16);
       }
     }
-    
 </style>

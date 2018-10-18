@@ -1,4 +1,5 @@
-// The Vue build version to load with the `import` command
+ 
+ // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
@@ -22,7 +23,7 @@ Vue.use(scroll)
 // 前置守卫
 router.beforeEach((to, from, next) => {
   // 设置title keywords description
-    setTKD(to)
+   setTKD(to)
   // 兼容 ios 微信分享功能 history 模式下只能在
   if (OS().ios && to.path !== location.pathname && router.mode == "history") {
     // 此处不可使用location.replace
@@ -54,4 +55,3 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-

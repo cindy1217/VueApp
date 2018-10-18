@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>你访问的页面不存在</h2>
-    <img src="../assets/img/errorPage.jpg" alt="">
+    <img src="@/assets/img/errorPage.jpg" alt="" @click="ddd">
     <p>{{countDownTime}}s后将返回首页</p>
   </div>
 </template>
@@ -24,6 +24,9 @@
           }, 1000);
         }
         return 
+      },
+      ddd() {
+        this.$router.push('/')
       }
     },
     mounted() {

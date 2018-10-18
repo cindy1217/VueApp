@@ -13,15 +13,16 @@ export  function initWxShare(to) {
 				cancel: function() {}
 			}
 			// 路径请求
-			let configURL = window.location.origin + to.fullPath//history 模式
-			// let configURL = window.location.href.split('#')[0]// hash
+			//let configURL = window.location.origin + to.fullPath//history 模式
+			let configURL = window.location.href.split('#')[0]// hash
 			fetch.get('User/Wechat/jssdk',{
 				params:{
-					'url': encodeURIComponent(configURL),
+					'url': configURL,
 					'appId': process.env.appId
 				}
 			}).then(function (res) {
 				let configJson = res.data.data
+				console.log(res.data.data)
 			  	wx.config({
 		            debug: (process.env.NODE_ENV == "development") ? true : false, // ETC 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
 		            appId: configJson.appid, // ETC 必填，公众号的唯一标识
