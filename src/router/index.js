@@ -6,7 +6,7 @@ import Router from 'vue-router'
 const Layout = () => import (/*webpackChunkName: "layout"*/ '@/views/layout/layout')
 const Home = () => import(/*webpackChunkName: "home"*/ "@/views/home/home")
 const Login = () => import(/*webpackChunkName: "login"*/ "@/views/login/login")
-const ErrorPage =  () => import(/*webpackChunkName: "search"*/ '@/views/404/errorPage')
+const ErrorPage =  () => import(/*webpackChunkName: "error"*/ '@/views/404/errorPage')
 Vue.use(Router)
 export default new Router({
   mode:'history',
@@ -23,7 +23,9 @@ export default new Router({
             requireAuth:true,// 登陆后置
             title:'首页',
             description:'我是首页描述',
-            keywords:'我是首页关键字'
+            keywords:'我是首页关键字',
+            headerShow:true,
+            footerShow:true,  
           },
         },
         {
@@ -34,7 +36,9 @@ export default new Router({
             requireAuth:true,// 登陆后置
             title:'首页',
             description:'我是首页描述',
-            keywords:'我是首页关键字'
+            keywords:'我是首页关键字',
+            headerShow:true,
+            footerShow:true, 
           },
         },
         {
@@ -45,7 +49,8 @@ export default new Router({
             requireAuth:false,
             title:'登陆',
             description:'登陆描述',
-            keywords:'登陆关键字'
+            keywords:'登陆关键字',
+            headerShow:true,
           },
         },
         {

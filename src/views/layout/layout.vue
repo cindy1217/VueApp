@@ -1,8 +1,8 @@
 <template>
 	<div class="layout_content">
-		<headerBar v-if="headerShow"></headerBar>
-		<router-view class="layout_views"></router-view>
-		<footerBar v-if="footerShow"></footerBar>
+		<headerBar :title="title" v-if="headerShow"></headerBar>
+		<router-view class="layout_views" :key="$route.fullPath"></router-view>
+		<footerBar :footerNav="footerNav" v-if="footerShow"></footerBar>
 	</div>
 </template>
 <script>
@@ -11,17 +11,34 @@
 	export default {
 		data() {
 			return {
-				headerShow:true,
-				footerShow:true,
+				headerShow:false,
+				title:"bblink1",
+				footerShow:false,
+				footerNav:[
+					{name: 'bblink', icon: '', url: '/home'},
+					{name: 'bblink', icon: '', url: '/mine'},
+					{name: 'bblink', icon: '', url: '/mine'},
+					{name: 'bblink', icon: '', url: '/login'}
+				]
 			}
 		},
-		beforeRouteEnter(to,from,next) {
-			console.log(to)
-			next()
+		methods: {
+			resetLayout() {
+				this.title = this.$route.meta.title
+				if(!!this.$route.meta.headerShow) {
+					this.headerShow = this.$route.meta.headerShow
+				}
+				if(!!this.$route.meta.footerShow) {
+					this.footerShow = this.$route.meta.footerShow
+				}	
+			}
 		},
 		components: {
 			headerBar,
 			footerBar
+		},
+		created() {
+			this.resetLayout()
 		}
 	}
 </script>
@@ -33,8 +50,8 @@
 		height: 100%;
 		.layout_views{
 			flex:1;
-			background: pink;
 			overflow: auto;
+			position: relative;
 		}
 	}
 </style>

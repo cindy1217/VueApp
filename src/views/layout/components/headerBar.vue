@@ -7,7 +7,12 @@
 	export default {
 		data() {
 			return {
-				title:'title'
+			}
+		},
+		props:{
+			title:{
+				type:String,
+				default:'bblink'
 			}
 		}
 	}
