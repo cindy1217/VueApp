@@ -85,9 +85,6 @@
               })
             }
           }
-        },
-        beforeCreate(){
-          console.log(this.$route.matched[0].meta)
         }
     }
 </script>

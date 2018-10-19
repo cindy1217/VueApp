@@ -9,7 +9,7 @@ const Login = () => import(/*webpackChunkName: "login"*/ "@/views/login/login")
 const ErrorPage =  () => import(/*webpackChunkName: "error"*/ '@/views/404/errorPage')
 Vue.use(Router)
 export default new Router({
-  mode:'history',
+ // mode:'history',
   routes: [
     {
       path:'/',
